@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { StyleSheet, Text, View, AppRegistry, Image } from 'react-native';
+import Sidebar from 'react-native-sidebar';
 // import * as firebase from "firebase";
 
 
@@ -30,23 +31,19 @@ import { StyleSheet, Text, View, AppRegistry, Image } from 'react-native';
 
 // }
 
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
 
     let pic = {
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
+      uri: 'https://cdn2.iconfinder.com/data/icons/work-flow/512/Clipboard_List-512.png'
     };
 
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-        <Text>OMG BECKY HER BUTT IS SO BIG!</Text>
-        <Text>Something different</Text>
-        <Image source={pic} style={{width: 193, height: 110}}/>
-
-
+      <Image source={pic} style={{width: 193, height: 210}}/>
+        <Text></Text>
+        <Text></Text>
+        <Text>WELCOME TO TASKBUDDY!</Text>
       </View>
     );
   }
@@ -55,7 +52,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#84a0ce',
     alignItems: 'center',
     justifyContent: 'center',
   },
