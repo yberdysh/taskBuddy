@@ -92,6 +92,12 @@ export class ToDos extends Component {
     this.setModalVisible(true);
   }
 
+  setStateUtil = (property, value = undefined) => {
+    this.setState({
+      [property]: value,
+    });
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -107,7 +113,7 @@ export class ToDos extends Component {
               <TextInput
                 value={this.state.text}
                 placeholder="Add Item"
-                onChangeText={value => this.setState({ text: value })}
+                onChangeText= {(value) => this.setStateUtil('text', value)}
               />
 
               <TouchableHighlight
