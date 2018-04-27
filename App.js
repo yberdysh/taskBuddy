@@ -1,19 +1,44 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, AppRegistry, Image } from 'react-native';
 import Sidebar from 'react-native-sidebar';
-// import * as firebase from "firebase";
+import { NativeRouter, Route, Link } from 'react-router-native';
+import Expo from 'expo';
+import {StackNavigator} from 'react-navigation';
+import * as firebase from "firebase";
+import HomeScreen from './app/components/HomeScreen';
+import {ToDos, firebaseApp} from './app/components/ToDos'
 
+// const firebaseConfig = {
+//     apiKey: "AIzaSyDtqe_XHo7xoyjjHPiweocaKm3OitwbFHU",
+//     authDomain: "itemlister-8ebed.firebaseapp.com",
+//     databaseURL: "https://itemlister-8ebed.firebaseio.com",
+//     projectId: "itemlister-8ebed",
+//     storageBucket: ""
+// };
 
-//   // Initialize Firebase
-//   var config = {
-//     apiKey: "AIzaSyAKEtc9lCiCfUEj6h3FFGZq344Hgh6aqnc",
-//     authDomain: "taskbuddy-8ee26.firebaseapp.com",
-//     databaseURL: "https://taskbuddy-8ee26.firebaseio.com",
-//     projectId: "taskbuddy-8ee26",
-//     storageBucket: "taskbuddy-8ee26.appspot.com",
-//     messagingSenderId: "286805478087"
-//   };
-//   firebase.initializeApp(config);
+// const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+const NavigationApp = StackNavigator({
+  Home: { screen: HomeScreen},
+  ToDos: {screen: ToDos}
+}, {
+  navigationOptions: {
+    headerStyle: {
+      marginTop: Expo.Constants.statusBarHeight
+    }
+  }
+});
+
+  // Initialize Firebase
+  // var config = {
+  //   apiKey: "AIzaSyAKEtc9lCiCfUEj6h3FFGZq344Hgh6aqnc",
+  //   authDomain: "taskbuddy-8ee26.firebaseapp.com",
+  //   databaseURL: "https://taskbuddy-8ee26.firebaseio.com",
+  //   projectId: "taskbuddy-8ee26",
+  //   storageBucket: "taskbuddy-8ee26.appspot.com",
+  //   messagingSenderId: "286805478087"
+  // };
+  // firebase.initializeApp(config);
 
 // async signup(email, pass) {
 
@@ -32,28 +57,18 @@ import Sidebar from 'react-native-sidebar';
 // }
 
 export default class App extends Component {
+
+  addItem(){
+    // this.setModalVisible(true);
+  }
+
   render() {
 
-    let pic = {
-      uri: 'https://cdn2.iconfinder.com/data/icons/work-flow/512/Clipboard_List-512.png'
-    };
+
 
     return (
-      <View style={styles.container}>
-      <Image source={pic} style={{width: 193, height: 210}}/>
-        <Text></Text>
-        <Text></Text>
-        <Text>WELCOME TO TASKBUDDY!</Text>
-      </View>
+      <NavigationApp />
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#84a0ce',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
