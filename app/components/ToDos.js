@@ -6,6 +6,7 @@ import {
   View,
   ListView,
   TouchableHighlight,
+  TouchableOpacity,
   Modal,
   TextInput
 } from "react-native";
@@ -53,7 +54,7 @@ export class ToDos extends Component {
     itemsRef.on("value", snap => {
       let items = [];
       snap.forEach(child => {
-        items.push({
+        items.unshift({
           title: child.val().title,
           _key: child.key
         });
@@ -76,15 +77,17 @@ export class ToDos extends Component {
 
   renderRow(item) {
     return (
-      <TouchableHighlight
-        onPress={() => {
-          this.pressRow(item);
-        }}
-      >
-        <View style={styles.li}>
-          <Text style={styles.liText}>{item.title}</Text>
-        </View>
-      </TouchableHighlight>
+      <View style={styles.item}>
+        <Text style={styles.itemText}>{item.title}</Text>
+        <TouchableOpacity
+          style={styles.doneButton}
+          onPress={() => {
+            this.pressRow(item);
+          }}
+        >
+          <Text>Done</Text>
+        </TouchableOpacity>
+      </View>
     );
   }
 

@@ -60,6 +60,20 @@ module.exports = StyleSheet.create({
     paddingLeft: 16,
     paddingLeft: 14,
     paddingBottom: 16
+  },
+    item: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderColor: '#eaeaea',
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  itemText: {
+    flex: 1,
+  },
+  doneButton: {
+    padding: 10,
+    backgroundColor: '#eaeaea'
   }
 })
 
