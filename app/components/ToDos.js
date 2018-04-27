@@ -94,7 +94,7 @@ export class ToDos extends Component {
 
   setStateUtil(property, value = undefined) {
     this.setState({
-      [property]: value,
+      [property]: value
     });
   };
 
