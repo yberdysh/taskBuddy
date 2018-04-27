@@ -126,6 +126,7 @@ export class ToDos extends Component {
                 onPress={() => {
                   this.itemsRef.push({ title: this.state.text });
                   this.setModalVisible(!this.state.modalVisible);
+                  this.setStateUtil("text", '');
                 }}
               >
                 <Text>Save Item</Text>
