@@ -115,8 +115,11 @@ export class ToDos extends Component {
               <Toolbar title="Add Item" />
               <TextInput
                 value={this.state.text}
-                placeholder="Add Item"
+                placeholder="Add New Task"
                 onChangeText={value => this.setStateUtil("text", value)}
+                style={styles.textInput}
+                returnKeyType="done"
+                onSubmitEditing={this.onNewItem}
               />
 
               <TouchableHighlight

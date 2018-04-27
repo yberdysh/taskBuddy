@@ -53,6 +53,13 @@ module.exports = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center'
   },
+    textInput: {
+    height: 40,
+    borderColor: 'grey',
+    borderWidth: 1,
+    margin: 10,
+    padding: 10
+  },
   action: {
     backgroundColor: constants.actionColor,
     borderColor: 'transparent',
