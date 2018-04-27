@@ -135,7 +135,7 @@ export class ToDos extends Component {
             </View>
           </View>
         </Modal>
-        <Toolbar title="ItemLister" />
+        <Toolbar title="To Do List" />
         <ListView
           dataSource={this.state.itemDataSource}
           renderRow={this.renderRow}
