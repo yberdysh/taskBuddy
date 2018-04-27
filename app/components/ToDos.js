@@ -10,19 +10,18 @@ import {
   TextInput
 } from "react-native";
 import * as firebase from "firebase";
-import Toolbar from './Toolbar';
+import Toolbar from "./Toolbar";
 
 // import Toolbar from "./app/components/Toolbar/Toolbar";
-import AddButton from './AddButton';
-const styles = require('../style')
-
+import AddButton from "./AddButton";
+const styles = require("../style");
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDtqe_XHo7xoyjjHPiweocaKm3OitwbFHU",
-    authDomain: "itemlister-8ebed.firebaseapp.com",
-    databaseURL: "https://itemlister-8ebed.firebaseio.com",
-    projectId: "itemlister-8ebed",
-    storageBucket: ""
+  apiKey: "AIzaSyDtqe_XHo7xoyjjHPiweocaKm3OitwbFHU",
+  authDomain: "itemlister-8ebed.firebaseapp.com",
+  databaseURL: "https://itemlister-8ebed.firebaseio.com",
+  projectId: "itemlister-8ebed",
+  storageBucket: ""
 };
 
 export const firebaseApp = firebase.initializeApp(firebaseConfig);
@@ -32,7 +31,7 @@ export class ToDos extends Component {
     super();
     let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
-      text: '',
+      text: "",
       itemDataSource: ds,
       modalVisible: false
     };
@@ -49,7 +48,7 @@ export class ToDos extends Component {
     this.getItems(this.itemsRef);
   }
 
-    getItems(itemsRef) {
+  getItems(itemsRef) {
     // let items = [{title: 'Item One'}, {title: 'Item Two'}];
     itemsRef.on("value", snap => {
       let items = [];
@@ -65,14 +64,14 @@ export class ToDos extends Component {
     });
   }
 
-    pressRow(item) {
+  pressRow(item) {
     this.itemsRef.child(item._key).remove();
   }
 
-    setModalVisible(visible){
+  setModalVisible(visible) {
     this.setState({
       modalVisible: visible
-    })
+    });
   }
 
   renderRow(item) {
@@ -89,46 +88,44 @@ export class ToDos extends Component {
     );
   }
 
-    addItem(){
+  addItem() {
     this.setModalVisible(true);
   }
 
-    render() {
+  render() {
     return (
       <View style={styles.container}>
-      <Modal
+        <Modal
           animationType="slide"
           transparent={false}
           visible={this.state.modalVisible}
-          onRequestClose={() => {}}>
-          <View style={{marginTop: 22}}>
+          onRequestClose={() => {}}
+        >
+          <View style={{ marginTop: 22 }}>
             <View>
-
               <Toolbar title="Add Item" />
               <TextInput
                 value={this.state.text}
                 placeholder="Add Item"
-                onChangeText= {(value) => this.setState({text:value})}
+                onChangeText={value => this.setState({ text: value })}
               />
 
               <TouchableHighlight
                 onPress={() => {
-                  this.itemsRef.push({title: this.state.text})
+                  this.itemsRef.push({ title: this.state.text });
                   this.setModalVisible(!this.state.modalVisible);
-
-                }}>
+                }}
+              >
                 <Text>Save Item</Text>
               </TouchableHighlight>
 
               <TouchableHighlight
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
-
-                }}>
+                }}
+              >
                 <Text>Cancel</Text>
               </TouchableHighlight>
-
-
             </View>
           </View>
         </Modal>
@@ -137,9 +134,8 @@ export class ToDos extends Component {
           dataSource={this.state.itemDataSource}
           renderRow={this.renderRow}
         />
-        <AddButton onPress={this.addItem.bind(this)} title="Add Item"/>
+        <AddButton onPress={this.addItem.bind(this)} title="Add Item" />
       </View>
     );
   }
-
 }
