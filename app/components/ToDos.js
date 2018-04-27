@@ -17,11 +17,11 @@ import AddButton from "./AddButton";
 const styles = require("../style");
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAKEtc9lCiCfUEj6h3FFGZq344Hgh6aqnc",
-    authDomain: "taskbuddy-8ee26.firebaseapp.com",
-    databaseURL: "https://taskbuddy-8ee26.firebaseio.com",
-    projectId: "taskbuddy-8ee26",
-    storageBucket: "taskbuddy-8ee26.appspot.com"
+  apiKey: "AIzaSyAKEtc9lCiCfUEj6h3FFGZq344Hgh6aqnc",
+  authDomain: "taskbuddy-8ee26.firebaseapp.com",
+  databaseURL: "https://taskbuddy-8ee26.firebaseio.com",
+  projectId: "taskbuddy-8ee26",
+  storageBucket: "taskbuddy-8ee26.appspot.com"
 };
 
 export const firebaseApp = firebase.initializeApp(firebaseConfig);
@@ -31,7 +31,7 @@ export class ToDos extends Component {
     super();
     let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
-      text: '',
+      text: "",
       itemDataSource: ds,
       modalVisible: false
     };
@@ -96,7 +96,7 @@ export class ToDos extends Component {
     this.setState({
       [property]: value
     });
-  };
+  }
 
   render() {
     return (
@@ -113,7 +113,7 @@ export class ToDos extends Component {
               <TextInput
                 value={this.state.text}
                 placeholder="Add Item"
-                onChangeText= {(value) => this.setStateUtil('text', value)}
+                onChangeText={value => this.setStateUtil("text", value)}
               />
 
               <TouchableHighlight
@@ -137,6 +137,7 @@ export class ToDos extends Component {
         </Modal>
         <Toolbar title="To Do List" />
         <ListView
+          enableEmptySections={true}
           dataSource={this.state.itemDataSource}
           renderRow={this.renderRow}
         />
