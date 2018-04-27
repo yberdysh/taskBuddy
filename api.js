@@ -2,10 +2,10 @@ import Appbase from 'appbase-js';
 
 import CONFIG from './../constants/Config';
 
-class TodoModel {
+class taskModel {
   constructor(key) {
     this.key = key;
-    this.todos = [];
+    this.tasks = [];
     this.onChanges = [];
     this.appbaseRef = new Appbase({
       url: CONFIG.url,
@@ -15,10 +15,10 @@ class TodoModel {
     });
   }
 
-  add(todo) {
+  add(task) {
     const body = {
-      title: todo.title,
-      completed: todo.completed,
+      title: task.title,
+      completed: task.completed,
       createdAt: Date.now(),
     };
 
@@ -35,8 +35,8 @@ class TodoModel {
       });
   }
 
-  update = (editedTodo) => {
-    const { _id, ...todo } = editedTodo;
+  update = (editedTask) => {
+    const { _id, ...task } = editedTask;
 
     this.appbaseRef
       .update({
@@ -44,8 +44,8 @@ class TodoModel {
         id: _id,
         body: {
           doc: {
-            title: todo.title,
-            completed: todo.completed,
+            title: task.title,
+            completed: task.completed,
           },
         },
       })
@@ -57,11 +57,11 @@ class TodoModel {
       });
   };
 
-  destroy = (todo) => {
+  destroy = (task) => {
     this.appbaseRef
       .delete({
         type: CONFIG.type,
-        id: todo._id,
+        id: task._id,
       })
       .on('data', (response) => {
         console.log('@api - destroy: ', response);
@@ -72,4 +72,4 @@ class TodoModel {
   };
 }
 
-export default TodoModel;
+export default taskModel;

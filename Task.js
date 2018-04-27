@@ -67,7 +67,7 @@ export default class App extends Component {
         <TextInput
           style={styles.textInput} 
           onSubmitEditing={this.onNewItem}
-          placeholder='Add New Item'
+          placeholder='Add New Task'
           returnKeyType="done"
           onChangeText={this.onChangeText}
           value={this.state.item}

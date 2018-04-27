@@ -22,7 +22,7 @@ const defaultProps = {
   },
 };
 
-class AddTodo extends Component {
+class AddTask extends Component {
   constructor(props) {
     super(props);
     const { title, completed, createdAt } = this.props.todo;
@@ -98,7 +98,7 @@ class AddTodo extends Component {
   }
 }
 
-AddTodo.propTypes = propTypes;
-AddTodo.defaultProps = defaultProps;
+AddTask.propTypes = propTypes;
+AddTask.defaultProps = defaultProps;
 
-export default AddTodo;
+export default AddTask;

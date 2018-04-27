@@ -13,8 +13,8 @@ const propTypes = {
     onDelete: PropTypes.func.isRequired,
 };
 
-class TodoItem extends Component {
-    onTodoItemToggle = (todo, propAction) => {
+class TaskItem extends Component {
+    onTaskItemToggle = (todo, propAction) => {
         propAction({
             ...todo,
             completed: !todo.completed,
@@ -43,7 +43,7 @@ class TodoItem extends Component {
         }}
         >
           <TouchableOpacity
-          onPress={() => this.onTodoItemToggle(todo, onUpdate)}
+          onPress={() => this.onTaskItemToggle(todo, onUpdate)}
             style={{
                 flex: 1,
                 width: '100%',
@@ -85,7 +85,7 @@ class TodoItem extends Component {
 }
 }
 
-TodoItem.propTypes = propTypes;
+TaskItem.propTypes = propTypes;
 
 const styles = StyleSheet.create({
   row: {
@@ -98,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TodoItem;
+export default TaskItem;

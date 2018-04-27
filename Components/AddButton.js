@@ -7,7 +7,7 @@ const propTypes = {
   onPress: PropTypes.func.isRequired,
 };
 
-const AddTodoButton = ({ onPress }) => (
+const AddTaskButton = ({ onPress }) => (
   <Fab
     direction="up"
     containerStyle={{}}
@@ -19,6 +19,6 @@ const AddTodoButton = ({ onPress }) => (
   </Fab>
 );
 
-AddTodoButton.propTypes = propTypes;
+AddTaskButton.propTypes = propTypes;
 
-export default AddTodoButton;
+export default AddTaskButton;
