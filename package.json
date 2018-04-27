@@ -21,6 +21,7 @@
   "dependencies": {
     "expo": "^26.0.0",
     "firebase": "^4.13.1",
+    "native-base": "^2.4.3",
     "react": "16.3.0",
     "react-native": "~0.54.1",
     "react-native-sidebar": "^0.3.0",

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Fab } from 'native-base'; // Version can be specified in package.json
+import { Icon, Fab } from 'native-base';
 import COLORS from '../constants/Colors';
 
 const propTypes = {

@@ -44,6 +44,7 @@ export default class App extends Component {
         <Text></Text>
         <Text></Text>
         <Text>WELCOME TO TASKBUDDY!</Text>
+        
       </View>
     );
   }
