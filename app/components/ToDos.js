@@ -17,11 +17,11 @@ import AddButton from "./AddButton";
 const styles = require("../style");
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDtqe_XHo7xoyjjHPiweocaKm3OitwbFHU",
-  authDomain: "itemlister-8ebed.firebaseapp.com",
-  databaseURL: "https://itemlister-8ebed.firebaseio.com",
-  projectId: "itemlister-8ebed",
-  storageBucket: ""
+    apiKey: "AIzaSyAKEtc9lCiCfUEj6h3FFGZq344Hgh6aqnc",
+    authDomain: "taskbuddy-8ee26.firebaseapp.com",
+    databaseURL: "https://taskbuddy-8ee26.firebaseio.com",
+    projectId: "taskbuddy-8ee26",
+    storageBucket: "taskbuddy-8ee26.appspot.com"
 };
 
 export const firebaseApp = firebase.initializeApp(firebaseConfig);
@@ -58,7 +58,7 @@ export class ToDos extends Component {
           _key: child.key
         });
       });
-      this.setState({
+      return this.setState({
         itemDataSource: this.state.itemDataSource.cloneWithRows(items)
       });
     });
