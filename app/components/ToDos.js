@@ -92,7 +92,7 @@ export class ToDos extends Component {
     this.setModalVisible(true);
   }
 
-  setStateUtil = (property, value = undefined) => {
+  setStateUtil(property, value = undefined) {
     this.setState({
       [property]: value,
     });
