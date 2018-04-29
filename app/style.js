@@ -81,6 +81,44 @@ module.exports = StyleSheet.create({
   doneButton: {
     padding: 10,
     backgroundColor: '#eaeaea'
+  },
+  saveButton: {
+    marginBottom: 30,
+    width: 180,
+    alignItems: 'center',
+    backgroundColor: '#5fce71',
+    borderRadius: 150
+  },  
+  cancelButton: {
+    marginBottom: 30,
+    width: 180,
+    alignItems: 'center',
+    backgroundColor: '#d1330c',
+    borderRadius: 150
+  }, 
+  buttonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    // paddingTop: 60
+  },
+  buttonText: {
+    padding: 20,
+    color: 'white',
+    fontFamily: 'Helvetica',
+    fontSize: 16
+  },
+  homeContainer: {
+    flex: 1,
+    backgroundColor: '#84a0ce',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button: {
+    marginBottom: 30,
+    width: 180,
+    alignItems: 'center',
+    backgroundColor: '#838ea0',
+    borderRadius: 100
   }
 })
 

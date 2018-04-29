@@ -1,19 +1,9 @@
 import React, { Component } from "react";
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  ListView,
-  TouchableHighlight,
-  TouchableOpacity,
-  Modal,
-  TextInput
+import { Platform, StyleSheet, Text, View, ListView, TouchableHighlight, TouchableOpacity, Modal, TextInput
 } from "react-native";
 import * as firebase from "firebase";
 import Toolbar from "./Toolbar";
 
-// import Toolbar from "./app/components/Toolbar/Toolbar";
 import AddButton from "./AddButton";
 const styles = require("../style");
 
@@ -50,7 +40,6 @@ export class ToDos extends Component {
   }
 
   getItems(itemsRef) {
-    // let items = [{title: 'Item One'}, {title: 'Item Two'}];
     itemsRef.on("value", snap => {
       let items = [];
       snap.forEach(child => {
@@ -66,7 +55,7 @@ export class ToDos extends Component {
   }
 
   pressRow(item) {
-    this.itemsRef.child(item._key).remove();
+    return this.itemsRef.child(item._key).remove();
   }
 
   setModalVisible(visible) {
@@ -79,12 +68,10 @@ export class ToDos extends Component {
     return (
       <View style={styles.item}>
         <Text style={styles.itemText}>{item.title}</Text>
-        <TouchableOpacity
-          style={styles.doneButton}
+        <TouchableOpacity style= {styles.doneButton}
           onPress={() => {
-            this.pressRow(item);
-          }}
-        >
+            return this.pressRow(item);
+          }} >
           <Text>Done</Text>
         </TouchableOpacity>
       </View>
@@ -110,7 +97,7 @@ export class ToDos extends Component {
           visible={this.state.modalVisible}
           onRequestClose={() => {}}
         >
-          <View style={{ marginTop: 22 }}>
+          <View style={{ marginTop: 30 }}>
             <View>
               <Toolbar title="Add Item" />
               <TextInput
@@ -121,24 +108,28 @@ export class ToDos extends Component {
                 returnKeyType="done"
                 onSubmitEditing={this.onNewItem}
               />
-
+              <View style={styles.buttonContainer}>
               <TouchableHighlight
                 onPress={() => {
                   this.itemsRef.push({ title: this.state.text });
                   this.setModalVisible(!this.state.modalVisible);
                   this.setStateUtil("text", '');
-                }}
-              >
-                <Text>Save Item</Text>
+                }} >
+                <View style={styles.saveButton}>
+                <Text style= {styles.buttonText}>Save Item</Text>
+                </View>
               </TouchableHighlight>
 
               <TouchableHighlight
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
-                }}
-              >
-                <Text>Cancel</Text>
+                  this.setStateUtil("text", '');
+                }} >
+                <View style={styles.cancelButton}>
+                <Text style= {styles.buttonText}>Cancel</Text>
+                </View>
               </TouchableHighlight>
+              </View> 
             </View>
           </View>
         </Modal>
