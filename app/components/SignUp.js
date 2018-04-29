@@ -12,8 +12,9 @@ export default class SignUp extends Component {
       password: ""
     };
   }
-  
+
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <Input
@@ -29,9 +30,8 @@ export default class SignUp extends Component {
           value={this.state.password}
           secureTextEntry
         />
-        <SignUpButton onPress={signup} email={this.state.email} pass={this.state.password}>
-          {" "}
-          SIGN UP{" "}
+        <SignUpButton onPress={() => navigate('ToDos')} email={this.state.email} pass={this.state.password}>
+          SIGN UP
         </SignUpButton>
       </View>
     );

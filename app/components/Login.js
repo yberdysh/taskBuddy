@@ -14,6 +14,7 @@
     }
   }
   render(){
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <Input
@@ -29,7 +30,7 @@
           value={this.state.password}
           secureTextEntry
         />
-        <LoginButton onPress={login} email={this.state.email} pass={this.state.password}>Log In</LoginButton>
+        <LoginButton onPress={() => navigate('ToDos')} email={this.state.email} pass={this.state.password}>Log In</LoginButton>
       </View>)
   }
  }
