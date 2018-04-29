@@ -50,7 +50,7 @@ module.exports = StyleSheet.create({
   },
   actionText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 20,
     textAlign: 'center'
   },
     textInput: {
@@ -66,7 +66,9 @@ module.exports = StyleSheet.create({
     borderWidth: 1,
     paddingLeft: 16,
     paddingLeft: 14,
-    paddingBottom: 16
+    paddingBottom: 25,
+    paddingTop: 25,
+    marginBottom: 40
   },
     item: {
     padding: 10,
@@ -88,14 +90,14 @@ module.exports = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#5fce71',
     borderRadius: 150
-  },  
+  },
   cancelButton: {
     marginBottom: 30,
     width: 180,
     alignItems: 'center',
     backgroundColor: '#d1330c',
     borderRadius: 150
-  }, 
+  },
   buttonContainer: {
     alignItems: 'center',
     justifyContent: 'center',

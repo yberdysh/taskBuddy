@@ -19,7 +19,7 @@ export default class AddButton extends Component {
           underlayColor="#24ce84"
           onPress={this.props.onPress}
         >
-          <Text style={styles.actionText}>{this.props.title}</Text>
+          <Text style={styles.actionText}>Add Task</Text>
         </TouchableHighlight>
       </View>
     );
