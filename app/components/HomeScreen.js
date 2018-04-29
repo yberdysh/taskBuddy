@@ -8,7 +8,8 @@ import {ToDos} from './ToDos'
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
-    title: 'Home'
+    title: 'Home',
+    header: null
   }
   render() {
     const {navigate} = this.props.navigation;
