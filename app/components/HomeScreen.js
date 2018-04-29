@@ -28,7 +28,7 @@ export default class HomeScreen extends Component {
         <Text
           onPress={() => navigate('ToDos')}
         >See Your To Do List</Text>
-        <TouchableOpacity onPress={this._onPressButton} underlayColor="white">
+        <TouchableOpacity onPress={() => navigate('Login')} underlayColor="white">
       <View style={styles.button}>
         <Text style={styles.buttonText}>LOG IN</Text>
       </View>

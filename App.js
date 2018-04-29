@@ -7,6 +7,7 @@ import {StackNavigator} from 'react-navigation';
 import * as firebase from "firebase";
 import HomeScreen from './app/components/HomeScreen';
 import {ToDos, firebaseApp} from './app/components/ToDos'
+import Login from './app/components/Login'
 
 // const firebaseConfig = {
 //     apiKey: "AIzaSyDtqe_XHo7xoyjjHPiweocaKm3OitwbFHU",
@@ -20,7 +21,8 @@ import {ToDos, firebaseApp} from './app/components/ToDos'
 
 const NavigationApp = StackNavigator({
   Home: { screen: HomeScreen},
-  ToDos: {screen: ToDos}
+  ToDos: {screen: ToDos},
+  Login: {screen: Login}
 }, {
   navigationOptions: {
     headerStyle: {
