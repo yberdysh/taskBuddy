@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {StyleSheet, TouchableOpacity, Text, View} from 'react-native'
 // const styles = require('../style.js')
 
-export const LoginButton = ({onPress, children}) => {
+export const LoginButton = ({onPress, children, email, pass}) => {
     return (
-      <TouchableOpacity onPress={onPress} style={styles.button} >
+      <TouchableOpacity onPress={() => onPress(email, pass)} style={styles.button} >
         <Text style={styles.text}>{children}</Text>
     </TouchableOpacity>
     );

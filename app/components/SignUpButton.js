@@ -5,7 +5,7 @@ import {StyleSheet, TouchableOpacity, Text, View} from 'react-native'
 export default class SignUpButton extends Component {
   render() {
     return (
-      <TouchableOpacity onPress={this.props.onPress} underlayColor="white">
+      <TouchableOpacity onPress={() => this.props.onPress(this.props.email, this.props.pass)} underlayColor="white">
       <View style={styles.button}>
         <Text style={styles.text}>SIGN UP</Text>
       </View>

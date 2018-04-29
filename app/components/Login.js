@@ -2,6 +2,7 @@
  import {StyleSheet, Text, View} from 'react-native';
  import {Input} from './Input';
  import {LoginButton} from './LoginButton'
+ import {login} from './Firebase.js'
 
 
  export default class Login extends Component {
@@ -28,7 +29,7 @@
           value={this.state.password}
           secureTextEntry
         />
-        <LoginButton onPress={() => console.log('pressed')}>Log In</LoginButton>
+        <LoginButton onPress={login} email={this.state.email} pass={this.state.password}>Log In</LoginButton>
       </View>)
   }
  }

@@ -2,20 +2,21 @@ import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View, ListView, TouchableHighlight, TouchableOpacity, Modal, TextInput
 } from "react-native";
 import * as firebase from "firebase";
+import {firebaseApp} from './Firebase.js'
 import Toolbar from "./Toolbar";
-
 import AddButton from "./AddButton";
+
 const styles = require("../style");
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAKEtc9lCiCfUEj6h3FFGZq344Hgh6aqnc",
-  authDomain: "taskbuddy-8ee26.firebaseapp.com",
-  databaseURL: "https://taskbuddy-8ee26.firebaseio.com",
-  projectId: "taskbuddy-8ee26",
-  storageBucket: "taskbuddy-8ee26.appspot.com"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyAKEtc9lCiCfUEj6h3FFGZq344Hgh6aqnc",
+//   authDomain: "taskbuddy-8ee26.firebaseapp.com",
+//   databaseURL: "https://taskbuddy-8ee26.firebaseio.com",
+//   projectId: "taskbuddy-8ee26",
+//   storageBucket: "taskbuddy-8ee26.appspot.com"
+// };
 
-export const firebaseApp = firebase.initializeApp(firebaseConfig);
+// export const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 export class ToDos extends Component {
   constructor() {
@@ -23,6 +24,7 @@ export class ToDos extends Component {
     let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
       text: "",
+      createdBy: '',
       itemDataSource: ds,
       modalVisible: false
     };
@@ -45,9 +47,11 @@ export class ToDos extends Component {
       snap.forEach(child => {
         items.unshift({
           title: child.val().title,
+          createdBy: child.val().createdBy,
           _key: child.key
         });
       });
+      items = items.filter(item => item.createdBy === firebase.auth().currentUser.uid)
       return this.setState({
         itemDataSource: this.state.itemDataSource.cloneWithRows(items)
       });
@@ -111,7 +115,7 @@ export class ToDos extends Component {
               <View style={styles.buttonContainer}>
               <TouchableHighlight
                 onPress={() => {
-                  this.itemsRef.push({ title: this.state.text });
+                  this.itemsRef.push({ title: this.state.text, createdBy: firebase.auth().currentUser.uid });
                   this.setModalVisible(!this.state.modalVisible);
                   this.setStateUtil("text", '');
                 }} >
@@ -129,7 +133,7 @@ export class ToDos extends Component {
                 <Text style= {styles.buttonText}>Cancel</Text>
                 </View>
               </TouchableHighlight>
-              </View> 
+              </View>
             </View>
           </View>
         </Modal>
