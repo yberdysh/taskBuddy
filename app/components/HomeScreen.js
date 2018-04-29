@@ -4,7 +4,7 @@ import Sidebar from 'react-native-sidebar';
 import { NativeRouter, Route, Link } from 'react-router-native';
 import Expo from 'expo';
 import {StackNavigator} from 'react-navigation';
-import {ToDos} from './ToDos'
+import {ToDos} from './ToDos';
 
 const styles = require('../style');
 

@@ -1,10 +1,12 @@
- import React from 'react';
+ import React, {Component} from 'react';
  import {StyleSheet, Text, View} from 'react-native';
- import Input from './Input';
+ import {Input} from './Input';
+ import {LoginButton} from './LoginButton'
 
- export default class Login extends React.Component {
+
+ export default class Login extends Component {
   constructor(){
-    super
+    super()
     this.state = {
       email: '',
       password: ''
@@ -16,16 +18,17 @@
         <Input
           placeholder="Enter your email..."
           label='Email'
-          onChangeText={this.setState({email})}
+          onChangeText={email => this.setState({email})}
           value={this.state.email}
         />
         <Input
           placeholder="Enter your password..."
           label='Password'
-          onChangeText={this.setState({password})}
+          onChangeText={password => this.setState({password})}
           value={this.state.password}
           secureTextEntry
         />
+        <LoginButton onPress={() => console.log('pressed')}>Log In</LoginButton>
       </View>)
   }
  }

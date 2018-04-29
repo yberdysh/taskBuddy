@@ -6,8 +6,9 @@ import Expo from 'expo';
 import {StackNavigator} from 'react-navigation';
 import * as firebase from "firebase";
 import HomeScreen from './app/components/HomeScreen';
-import {ToDos, firebaseApp} from './app/components/ToDos';
 import SignUp from './app/components/SignUp';
+import {ToDos, firebaseApp} from './app/components/ToDos'
+import Login from './app/components/Login'
 
 // const firebaseConfig = {
 //     apiKey: "AIzaSyDtqe_XHo7xoyjjHPiweocaKm3OitwbFHU",
@@ -22,7 +23,8 @@ import SignUp from './app/components/SignUp';
 const NavigationApp = StackNavigator({
   Home: { screen: HomeScreen},
   ToDos: {screen: ToDos},
-  SignUp: {screen: SignUp}
+  SignUp: {screen: SignUp},
+  Login: {screen: Login}
 }, {
   navigationOptions: {
     headerStyle: {

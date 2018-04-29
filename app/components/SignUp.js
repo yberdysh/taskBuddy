@@ -16,19 +16,19 @@ export default class SignUp extends Component {
    return (
      <View style={styles.container}>
      <Input
-         placeholder="NAME"
+         placeholder="Please enter your name"
          label="Name"
          onChangeText={name => this.setState({name})}
          value={this.state.name}
        />
        <Input
-         placeholder="EMAIL"
+         placeholder="Please enter your email"
          label="Email"
          onChangeText={email => this.setState({email})}
          value={this.state.email}
        />
        <Input
-         placeholder="PASSWORD"
+         placeholder="Enter a password"
          label="Password"
          onChangeText={password => this.setState({password})}
          value={this.state.password}
