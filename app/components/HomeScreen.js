@@ -5,7 +5,6 @@ import { NativeRouter, Route, Link } from 'react-router-native';
 import Expo from 'expo';
 import {StackNavigator} from 'react-navigation';
 import {ToDos} from './ToDos'
-import LoginButton from './LoginButton'
 
 const styles = require('../style');
 
@@ -29,7 +28,11 @@ export default class HomeScreen extends Component {
         <Text
           onPress={() => navigate('ToDos')}
         >See Your To Do List</Text>
-        <LoginButton onPress={this._onPressButton}/>
+        <TouchableOpacity onPress={this._onPressButton} underlayColor="white">
+      <View style={styles.button}>
+        <Text style={styles.buttonText}>LOG IN</Text>
+      </View>
+    </TouchableOpacity>
     <TouchableOpacity onPress={this._onPressButton}>
       <View style={styles.button}>
         <Text style={styles.buttonText}>SIGN UP</Text>
