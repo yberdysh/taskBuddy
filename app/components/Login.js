@@ -1,10 +1,10 @@
- import React from 'react';
+ import React, {Component} from 'react';
  import {StyleSheet, Text, View} from 'react-native';
  import {Input} from './Input';
  import {LoginButton} from './LoginButton'
 
 
- export default class Login extends React.Component {
+ export default class Login extends Component {
   constructor(){
     super()
     this.state = {

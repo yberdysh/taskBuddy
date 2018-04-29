@@ -6,6 +6,7 @@ import Expo from 'expo';
 import {StackNavigator} from 'react-navigation';
 import * as firebase from "firebase";
 import HomeScreen from './app/components/HomeScreen';
+import SignUp from './app/components/SignUp';
 import {ToDos, firebaseApp} from './app/components/ToDos'
 import Login from './app/components/Login'
 
@@ -22,6 +23,7 @@ import Login from './app/components/Login'
 const NavigationApp = StackNavigator({
   Home: { screen: HomeScreen},
   ToDos: {screen: ToDos},
+  SignUp: {screen: SignUp},
   Login: {screen: Login}
 }, {
   navigationOptions: {

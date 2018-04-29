@@ -4,7 +4,7 @@ import Sidebar from 'react-native-sidebar';
 import { NativeRouter, Route, Link } from 'react-router-native';
 import Expo from 'expo';
 import {StackNavigator} from 'react-navigation';
-import {ToDos} from './ToDos'
+import {ToDos} from './ToDos';
 
 const styles = require('../style');
 
@@ -28,12 +28,12 @@ export default class HomeScreen extends Component {
         <Text
           onPress={() => navigate('ToDos')}
         >See Your To Do List</Text>
-        <TouchableOpacity onPress={() => navigate('Login')} underlayColor="white">
+       <TouchableOpacity onPress={() => navigate('Login')} underlayColor="white">
       <View style={styles.button}>
         <Text style={styles.buttonText}>LOG IN</Text>
       </View>
     </TouchableOpacity>
-    <TouchableOpacity onPress={this._onPressButton}>
+    <TouchableOpacity onPress={() => navigate('SignUp')}>
       <View style={styles.button}>
         <Text style={styles.buttonText}>SIGN UP</Text>
       </View>
