@@ -63,7 +63,7 @@ export class ToDos extends Component {
   }
 
   setModalVisible(visible) {
-    this.setState({
+    return this.setState({
       modalVisible: visible
     });
   }
@@ -117,7 +117,7 @@ export class ToDos extends Component {
                 onPress={() => {
                   this.itemsRef.push({ title: this.state.text, createdBy: firebase.auth().currentUser.uid });
                   this.setModalVisible(!this.state.modalVisible);
-                  this.setStateUtil("text", '');
+                  return this.setStateUtil("text", '');
                 }} >
                 <View style={styles.saveButton}>
                 <Text style= {styles.buttonText}>Save Item</Text>
@@ -127,7 +127,7 @@ export class ToDos extends Component {
               <TouchableHighlight
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
-                  this.setStateUtil("text", '');
+                  return this.setStateUtil("text", '');
                 }} >
                 <View style={styles.cancelButton}>
                 <Text style= {styles.buttonText}>Cancel</Text>
