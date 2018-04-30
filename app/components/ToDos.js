@@ -24,13 +24,17 @@ export class ToDos extends Component {
     let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
       text: "",
+      assigningTo: '',
       createdBy: '',
+      assignedTo: null,
       itemDataSource: ds,
-      modalVisible: false
+      modalVisible: false,
+      modalAssign: false
     };
     this.itemsRef = this.getRef().child("items");
     this.renderRow = this.renderRow.bind(this);
     this.pressRow = this.pressRow.bind(this);
+    this.assign = this.assign.bind(this)
   }
 
   getRef() {
@@ -47,11 +51,12 @@ export class ToDos extends Component {
       snap.forEach(child => {
         items.unshift({
           title: child.val().title,
+          assigedTo: child.val().assignedTo,
           createdBy: child.val().createdBy,
           _key: child.key
         });
       });
-      items = items.filter(item => item.createdBy === firebase.auth().currentUser.uid)
+      items = items.filter(item => item.createdBy === firebase.auth().currentUser.uid && item.assignedTo !== null)
       return this.setState({
         itemDataSource: this.state.itemDataSource.cloneWithRows(items)
       });
@@ -62,12 +67,75 @@ export class ToDos extends Component {
     return this.itemsRef.child(item._key).remove();
   }
 
+
+
+  assign(item){
+      <View style={styles.container}>
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalAssign}
+          onRequestClose={() => {}}
+        >
+          <View style={{ marginTop: 30 }}>
+            <View>
+              <Toolbar title="Assign To" />
+              <TextInput
+                value={this.state.assigningTo}
+                placeholder="Recipient's email"
+                onChangeText={value => this.setStateUtil("assigningTo", value)}
+                style={styles.textInput}
+                returnKeyType="done"
+                onSubmitEditing={this.onNewItem}
+              />
+              <View style={styles.buttonContainer}>
+              <TouchableHighlight
+                onPress={() => {
+                  this.itemsRef.push({ title: this.state.text, createdBy: firebase.auth().currentUser.uid });
+                  this.setModalVisible(!this.state.modalAssign);
+                  return this.setStateUtil("assigningTo", '');
+                }} >
+                <View style={styles.saveButton}>
+                <Text style= {styles.buttonText}>Send Task</Text>
+                </View>
+              </TouchableHighlight>
+
+              <TouchableHighlight
+                onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible);
+                  return this.setStateUtil("text", '');
+                }} >
+                <View style={styles.cancelButton}>
+                <Text style= {styles.buttonText}>Cancel</Text>
+                </View>
+              </TouchableHighlight>
+              </View>
+            </View>
+          </View>
+        </Modal>
+        <Toolbar title="To Do List" />
+        <ListView
+          enableEmptySections={true}
+          dataSource={this.state.itemDataSource}
+          renderRow={this.renderRow}
+        />
+        <AddButton onPress={this.addItem.bind(this)} title="Add Item" />
+      </View>
+  }
+
+
+
   setModalVisible(visible) {
-    this.setState({
+    return this.setState({
       modalVisible: visible
     });
   }
 
+  setModalAssign(visible) {
+    return this.setState({
+      modalAssign: visible
+    });
+  }
   renderRow(item) {
     return (
       <View style={styles.item}>
@@ -77,6 +145,9 @@ export class ToDos extends Component {
             return this.pressRow(item);
           }} >
           <Text>Done</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style= {styles.doneButton}>
+          <Text>Assign</Text>
         </TouchableOpacity>
       </View>
     );
@@ -117,7 +188,7 @@ export class ToDos extends Component {
                 onPress={() => {
                   this.itemsRef.push({ title: this.state.text, createdBy: firebase.auth().currentUser.uid });
                   this.setModalVisible(!this.state.modalVisible);
-                  this.setStateUtil("text", '');
+                  return this.setStateUtil("text", '');
                 }} >
                 <View style={styles.saveButton}>
                 <Text style= {styles.buttonText}>Save Item</Text>
@@ -127,7 +198,7 @@ export class ToDos extends Component {
               <TouchableHighlight
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
-                  this.setStateUtil("text", '');
+                  return this.setStateUtil("text", '');
                 }} >
                 <View style={styles.cancelButton}>
                 <Text style= {styles.buttonText}>Cancel</Text>
